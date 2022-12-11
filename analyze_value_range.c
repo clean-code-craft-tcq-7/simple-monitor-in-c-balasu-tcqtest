@@ -6,7 +6,7 @@ void printError(char* errStr)
   printf("%s", errStr);
 }
 
-int analyzeTemperatureInRange(float temprature)
+int analyzeTemperatureInRange(float temperature)
 {
   int retStatus = 1;
   if(temperature < 0 || temperature > 45) 
