@@ -29,6 +29,5 @@ int main() {
   
   // Test individual analyze functions --> analyzeChargeRateInRange
   assert(analyzeChargeRateInRange(0.75) == 1);
-  assert(analyzeChargeRateInRange(0.8) == 1);
   assert(analyzeChargeRateInRange(0.85) == 0);
 }
