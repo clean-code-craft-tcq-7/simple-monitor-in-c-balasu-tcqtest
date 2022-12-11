@@ -12,4 +12,11 @@ int main() {
   assert(!batteryIsOk(30, 85, 0.5));
   // Test for temperature, soc in range and charge current out of range
   assert(!batteryIsOk(30, 70, 0.9));
+  
+  // Test individual analyze functions --> analyzeTemperatureInRange
+  assert(analyzeTemperatureInRange(20) == 1);
+  assert(analyzeTemperatureInRange(0) == 1);
+  assert(analyzeTemperatureInRange(45) == 1);
+  assert(analyzeTemperatureInRange(-0.95) == 0);
+  assert(analyzeTemperatureInRange(45.5) == 0);
 }
