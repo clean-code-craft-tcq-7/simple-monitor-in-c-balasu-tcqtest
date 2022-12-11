@@ -19,4 +19,11 @@ int main() {
   assert(analyzeTemperatureInRange(45) == 1);
   assert(analyzeTemperatureInRange(-0.95) == 0);
   assert(analyzeTemperatureInRange(45.5) == 0);
+  
+  // Test individual analyze functions --> analyzeSocInRange
+  assert(analyzeSocInRange(30) == 1);
+  assert(analyzeSocInRange(20) == 1);
+  assert(analyzeSocInRange(80) == 1);
+  assert(analyzeSocInRange(19) == 0);
+  assert(analyzeSocInRange(80.5) == 0);
 }
