@@ -1,39 +1,40 @@
 #include <stdio.h>
+#include "product_config.h"
 #include "analyze_value_range.h"
+#include "check_value_breach.h"
 
-void printError(char* errStr)
-{
-  printf("%s", errStr);
-}
-
-int analyzeTemperatureInRange(float temperature)
+int analyzeTemperatureInRange(float temperature, (void)(*printFunc)(int rangeStatus), int warningEnabled)
 {
   int retStatus = 1;
-  if(temperature < 0 || temperature > 45) 
+  valueRangeStatus rangeStatus = chackValueRange(TEMPERATURE_MIN_VALUE, TEMPERATURE_MAX_VALUE, temperature, warningEnabled);
+  
+  if(rangeStatus > NORMAL)
   {
-    printError("Temperature out of range!\n");
-    retStatus = 0;
+	  retStatus = 0;
+	  printFunc(rangeStatus)
   }
   return retStatus;
 }
 
-int analyzeSocInRange(float soc)
+int analyzeSocInRange(float soc, (void)(*printFunc)(int rangeStatus), int warningEnabled)
 {
   int retStatus = 1;
-  if(soc < 20 || soc > 80)
+  valueRangeStatus rangeStatus = chackValueRange(SOC_MIN_VALUE, SOC_MAX_VALUE, soc, warningEnabled);
+  
+  if(rangeStatus > NORMAL)
   {
-    printError("State of Charge out of range!\n");
-    retStatus = 0;
+	  retStatus = 0;
+	  printFunc(rangeStatus)
   }
   return retStatus;
 }
 
-int analyzeChargeRateInRange(float chargeRate)
+int analyzeChargeRateInRange(float chargeRate, (void)(*printFunc)(int rangeStatus))
 {
   int retStatus = 1;
-  if(chargeRate > 0.8)
+  if(chargeRate > CHARGE_RATE_MAX_VALUE)
   {
-    printError("Charge Rate out of range!\n");
+    printFunc(HIGH_VALUE_BREAH);
     retStatus = 0;
   }
   return retStatus;

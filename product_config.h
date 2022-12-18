@@ -1,0 +1,14 @@
+
+typedef enum{
+	ENGLISH,
+	GERMAN,
+	MAX_LANGUAGE_SUPRTD,
+}printLangType;
+
+#define TEMPERATURE_MIN_VALUE   10
+#define TEMPERATURE_MAX_VALUE	45
+
+#define SOC_MIN_VALUE 20
+#define SOC_MAX_VALUE 80
+
+#define CHARGE_RATE_MAX_VALUE 0.8
