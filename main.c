@@ -9,6 +9,13 @@
 #include "print_messages.h"
 #include "check_value_breach.h"
 
+char testString[50];
+
+void testPrintFunc(char* str)
+{
+    strcpy(testString, str);
+}
+
 int main() {
 
   setPrintLanguage(ENGLISH);
@@ -50,68 +57,68 @@ int main() {
 
   // Test print functions
   setPrintLanguage(ENGLISH);
-  char testString[50];
+
     // Test temperature English messages
-    printTempratureMessage(LOW_VALUE_WARNING, testString);
+    printTempratureMessage(LOW_VALUE_WARNING, &testPrintFunc);
     assert(strcmp(testString, "Low Temperature Warning\n") == 0);
-    printTempratureMessage(HIGH_VALUE_WARNING, testString);
+    printTempratureMessage(HIGH_VALUE_WARNING, &testPrintFunc);
     assert(strcmp(testString, "High Temperature Warning\n") == 0);
-    printTempratureMessage(LOW_VALUE_BREACH, testString);
+    printTempratureMessage(LOW_VALUE_BREACH, &testPrintFunc);
     assert(strcmp(testString, "Low Temperature Breach\n") == 0);
-    printTempratureMessage(HIGH_VALUE_BREACH, testString);
+    printTempratureMessage(HIGH_VALUE_BREACH, &testPrintFunc);
     assert(strcmp(testString, "High Temperature Breach\n") == 0);
 
     // Test SOC English messages
-    printSOCMessage(LOW_VALUE_WARNING, testString);
+    printSOCMessage(LOW_VALUE_WARNING, &testPrintFunc);
     assert(strcmp(testString, "Low SOC Warning\n") == 0);
-    printSOCMessage(HIGH_VALUE_WARNING, testString);
+    printSOCMessage(HIGH_VALUE_WARNING, &testPrintFunc);
     assert(strcmp(testString, "High SOC Warning\n") == 0);
-    printSOCMessage(LOW_VALUE_BREACH, testString);
+    printSOCMessage(LOW_VALUE_BREACH, &testPrintFunc);
     assert(strcmp(testString, "Low SOC Breach\n") == 0);
-    printSOCMessage(HIGH_VALUE_BREACH, testString);
+    printSOCMessage(HIGH_VALUE_BREACH, &testPrintFunc);
     assert(strcmp(testString, "High SOC Breach\n") == 0);
 
     // Test Charge rate English messages
-    printChargeRateMessage(LOW_VALUE_WARNING, testString);
+    printChargeRateMessage(LOW_VALUE_WARNING, &testPrintFunc);
     assert(strcmp(testString, "Low Charge Rate Warning\n") == 0);
-    printChargeRateMessage(HIGH_VALUE_WARNING, testString);
+    printChargeRateMessage(HIGH_VALUE_WARNING, &testPrintFunc);
     assert(strcmp(testString, "High Charge Rate Warning\n") == 0);
-    printChargeRateMessage(LOW_VALUE_BREACH, testString);
+    printChargeRateMessage(LOW_VALUE_BREACH, &testPrintFunc);
     assert(strcmp(testString, "Low Charge Rate Breach\n") == 0);
-    printChargeRateMessage(HIGH_VALUE_BREACH, testString);
+    printChargeRateMessage(HIGH_VALUE_BREACH, &testPrintFunc);
     assert(strcmp(testString, "High Charge Rate Breach\n") == 0);
 
     // Test print functions
     setPrintLanguage(GERMAN);
 
     // Test temperature German messages
-    printTempratureMessage(LOW_VALUE_WARNING, testString);
+    printTempratureMessage(LOW_VALUE_WARNING, &testPrintFunc);
     assert(strcmp(testString, "Warnung vor niedriger Temperatur\n") == 0);
-    printTempratureMessage(HIGH_VALUE_WARNING, testString);
+    printTempratureMessage(HIGH_VALUE_WARNING, &testPrintFunc);
     assert(strcmp(testString, "Warnung vor hoher Temperatur\n") == 0);
-    printTempratureMessage(LOW_VALUE_BREACH, testString);
+    printTempratureMessage(LOW_VALUE_BREACH, &testPrintFunc);
     assert(strcmp(testString, "Niedrige Temperaturverletzung\n") == 0);
-    printTempratureMessage(HIGH_VALUE_BREACH, testString);
+    printTempratureMessage(HIGH_VALUE_BREACH, &testPrintFunc);
     assert(strcmp(testString, "Hohe Temperaturverletzung\n") == 0);
 
     // Test SOC German messages
-    printSOCMessage(LOW_VALUE_WARNING, testString);
+    printSOCMessage(LOW_VALUE_WARNING, &testPrintFunc);
     assert(strcmp(testString, "Niedrige SOC-Warnung\n") == 0);
-    printSOCMessage(HIGH_VALUE_WARNING, testString);
+    printSOCMessage(HIGH_VALUE_WARNING, &testPrintFunc);
     assert(strcmp(testString, "Warnung zu hohem SOC\n") == 0);
-    printSOCMessage(LOW_VALUE_BREACH, testString);
+    printSOCMessage(LOW_VALUE_BREACH, &testPrintFunc);
     assert(strcmp(testString, "Niedrige SOC-Verletzung\n") == 0);
-    printSOCMessage(HIGH_VALUE_BREACH, testString);
+    printSOCMessage(HIGH_VALUE_BREACH, &testPrintFunc);
     assert(strcmp(testString, "Hohe SOC-Verletzung\n") == 0);
 
     // Test Charge rate German messages
-    printChargeRateMessage(LOW_VALUE_WARNING, testString);
+    printChargeRateMessage(LOW_VALUE_WARNING, &testPrintFunc);
     assert(strcmp(testString, "Warnung zu niedrigem Ladestrom\n") == 0);
-    printChargeRateMessage(HIGH_VALUE_WARNING, testString);
+    printChargeRateMessage(HIGH_VALUE_WARNING, &testPrintFunc);
     assert(strcmp(testString, "Warnung vor hoher Laderate\n") == 0);
-    printChargeRateMessage(LOW_VALUE_BREACH, testString);
+    printChargeRateMessage(LOW_VALUE_BREACH, &testPrintFunc);
     assert(strcmp(testString, "Verstoß gegen niedrige Gebührenrate\n") == 0);
-    printChargeRateMessage(HIGH_VALUE_BREACH, testString);
+    printChargeRateMessage(HIGH_VALUE_BREACH, &testPrintFunc);
     assert(strcmp(testString, "Verstoß gegen hohe Gebührenrate\n") == 0);
 
   return 0;

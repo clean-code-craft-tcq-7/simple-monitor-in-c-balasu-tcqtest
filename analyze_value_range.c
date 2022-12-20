@@ -8,7 +8,7 @@
 int analyzeTemperatureInRange(float temperature, void (*printFunc)(char*), int warningEnabled)
 {
     int retStatus = 1;
-    char printStr[50];
+
     valueRangeStatus rangeStatus = chackValueRange(TEMPERATURE_MIN_VALUE, TEMPERATURE_MAX_VALUE,
                     temperature, TEMPERATURE_TOLERANCE, warningEnabled);
 
@@ -16,18 +16,15 @@ int analyzeTemperatureInRange(float temperature, void (*printFunc)(char*), int w
     {
         retStatus = 0;
     }
-    if(rangeStatus > NORMAL)
-    {
-        printTempratureMessage(rangeStatus, printStr);
-        printFunc(printStr);
-    }
+    printTempratureMessage(rangeStatus, printFunc);
+
     return retStatus;
 }
 
 int analyzeSocInRange(float soc, void (*printFunc)(char*), int warningEnabled)
 {
     int retStatus = 1;
-    char printStr[50];
+
     valueRangeStatus rangeStatus = chackValueRange(SOC_MIN_VALUE, SOC_MAX_VALUE, soc,
                     SOC_TOLERANCE, warningEnabled);
 
@@ -36,18 +33,16 @@ int analyzeSocInRange(float soc, void (*printFunc)(char*), int warningEnabled)
         retStatus = 0;
 
     }
-    if(rangeStatus > NORMAL)
-    {
-        printSOCMessage(rangeStatus, printStr);
-        printFunc(printStr);
-    }
+
+    printSOCMessage(rangeStatus, printFunc);
+
     return retStatus;
 }
 
 int analyzeChargeRateInRange(float chargeRate, void (*printFunc)(char*), int warningEnabled)
 {
     int retStatus = 1;
-    char printStr[50];
+
     valueRangeStatus rangeStatus = chackValueRange(-FLT_MAX, CHARGE_RATE_MAX_VALUE, chargeRate,
                     CHARGE_RATE_TOLERANCE, warningEnabled);
 
@@ -56,10 +51,8 @@ int analyzeChargeRateInRange(float chargeRate, void (*printFunc)(char*), int war
         retStatus = 0;
 
     }
-    if(rangeStatus > NORMAL)
-    {
-        printChargeRateMessage(rangeStatus, printStr);
-        printFunc(printStr);
-    }
+
+    printChargeRateMessage(rangeStatus, printFunc);
+
     return retStatus;
 }
