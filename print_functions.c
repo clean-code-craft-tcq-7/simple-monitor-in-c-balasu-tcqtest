@@ -4,35 +4,38 @@
 #include "product_config.h"
 #include "print_messages.h"
 
-int printLangType printLanguage = ENGLISH;
+printLangType printLanguage = ENGLISH;
 
 void setPrintLanguage(printLangType language)
 {
 	printLanguage = language;
 }
 
-void printText(char* text)
+void printToConsole(char* text)
 {
 	printf("%s", text);
 }
 
-void printTempratureMessage(int rangeStatus)
+void printTempratureMessage(int rangeStatus, char* printStr)
 {
-	char* printMessageData = TemperatureMessageList[printLanguage];
+	char** printMessageData = TemperatureMessageList[printLanguage];
 	int offset = rangeStatus - 2;
-	printText(*(printMessageData + offset));
+	char* stringValue = printMessageData[offset];
+    strcpy(printStr, stringValue);
 }
 
-void printSOCMessage(int rangeStatus)
+void printSOCMessage(int rangeStatus, char* printStr)
 {
-	char* printMessageData = SOCMessageList[printLanguage];
+	char** printMessageData = SOCMessageList[printLanguage];
 	int offset = rangeStatus - 2;
-	printText(*(printMessageData + offset));
+	char* stringValue = printMessageData[offset];
+	strcpy(printStr, stringValue);
 }
 
-void printChargeRateMessage(int rangeStatus)
+void printChargeRateMessage(int rangeStatus, char* printStr)
 {
-	char* printMessageData = ChargeRateMessageList[printLanguage];
-	int offset = rangeStatus - 5;
-	printText(*(printMessageData + offset));
+	char** printMessageData = ChargeRateMessageList[printLanguage];
+	int offset = rangeStatus - 2;
+	char* stringValue = printMessageData[offset];
+    strcpy(printStr, stringValue);
 }
