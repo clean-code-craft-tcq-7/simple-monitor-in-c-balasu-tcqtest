@@ -19,7 +19,7 @@ void printToConsole(char* text)
 void printTempratureMessage(int rangeStatus, char* printStr)
 {
 	char** printMessageData = TemperatureMessageList[printLanguage];
-	int offset = rangeStatus - 2;
+	int offset = rangeStatus - 2; // To get the proper indexing
 	char* stringValue = printMessageData[offset];
     strcpy(printStr, stringValue);
 }
@@ -27,7 +27,7 @@ void printTempratureMessage(int rangeStatus, char* printStr)
 void printSOCMessage(int rangeStatus, char* printStr)
 {
 	char** printMessageData = SOCMessageList[printLanguage];
-	int offset = rangeStatus - 2;
+	int offset = rangeStatus - 2; // To get the proper indexing
 	char* stringValue = printMessageData[offset];
 	strcpy(printStr, stringValue);
 }
@@ -35,7 +35,7 @@ void printSOCMessage(int rangeStatus, char* printStr)
 void printChargeRateMessage(int rangeStatus, char* printStr)
 {
 	char** printMessageData = ChargeRateMessageList[printLanguage];
-	int offset = rangeStatus - 2;
+	int offset = rangeStatus - 2; // To get the proper indexing
 	char* stringValue = printMessageData[offset];
     strcpy(printStr, stringValue);
 }
